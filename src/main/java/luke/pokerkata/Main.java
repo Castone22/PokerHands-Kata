@@ -1,7 +1,5 @@
 package luke.pokerkata;
 
-import com.sun.javaws.exceptions.InvalidArgumentException;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -10,9 +8,13 @@ import static luke.pokerkata.HandBuilder.buildWhiteHand;
 import static luke.pokerkata.HandBuilder.extractCards;
 
 /**
- * Created by Luke on 5/8/2016.
- * A simple program to demo my card parser and hand evaluator.
+ * A simple executable program to demo my card parser and hand evaluator.
+ *
+ * @author Lucas Ridge lzridge.04@gmail.com
+ * @version 1.0
+ * @since 2010-03-31
  */
+
 public class Main {
     public static void main(String args[]) {
         ArrayList<String> result;
@@ -28,6 +30,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         String handIn = scanner.nextLine();
         System.out.println(handIn);
+        //exit gracefully if user asks to.
         if (handIn.contains("exit")) {
             System.exit(0);
         }
@@ -36,6 +39,7 @@ public class Main {
             result = extractCards(handIn);
             black = new Hand(buildBlackHand(result));
             white = new Hand(buildWhiteHand(result));
+            //shows the prompt again if wrong input is detected.  Only allowed inputs are exit and a card string.
         } catch (IllegalArgumentException e) {
             System.out.println("Please use the stated formatting.\n");
             main(args);
@@ -44,13 +48,16 @@ public class Main {
 
         int val = black.compareTo(white);
         if (val > 0) {
+            assert white != null;
             if (black.getType() == HandType.HIGH_CARD) {
+
                 winner = "Black wins with " + black.getType() + ":" + black.getHighestCard() +
                         " against " + white.getType() + ":" + white.getHighestCard();
             } else {
                 winner = "Black wins with " + black.getType() + " against " + white.getType();
             }
         } else if (val < 0) {
+            assert white != null;
             if (white.getType() == HandType.HIGH_CARD) {
                 winner = "White wins with " + white.getType() + ":" + white.getHighestCard() +
                         " against " + black.getType() + ":" + black.getHighestCard();

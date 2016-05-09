@@ -1,9 +1,11 @@
 package luke.pokerkata;
 
 /**
- * Created by Luke on 5/8/2016.
- *
+ * @author Lucas Ridge lzridge.04@gmail.com
+ * @version 1.0
+ * @since 2010-03-31
  */
+
 public enum HandType {
     HIGH_CARD,
     ONE_PAIR,

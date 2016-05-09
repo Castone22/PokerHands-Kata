@@ -1,17 +1,32 @@
 package luke.pokerkata;
 
 /**
- * Created by Luke on 5/2/2016.
- *
+ * @author Lucas Ridge lzridge.04@gmail.com
+ * @version 1.0
+ * @since 2010-03-31
  */
+
 public class Card {
     private final Suit suit;
     private final Face face;
+
+    /**
+     * Manual card constructor.
+     *
+     * @param suit a suit enum reference
+     * @param face a face enum reference
+     */
 
     public Card(Suit suit, Face face){
         this.suit = suit;
         this.face = face;
     }
+
+    /**
+     * Card constructor that parses a formatted input string to create a card object.
+     *
+     * @param c a string in the format of Black: #S #S #S #S #S  White: #S #S #S #S #S per the project spec.
+     */
 
     public Card(String c){
         this.suit = Suit.compareCode(c.substring(c.length()-2, c.length()-1));
@@ -34,6 +49,11 @@ public class Card {
 
         private String code;
 
+        /**
+         * enum comparator to create a suit object which is used to define a card.
+         *
+         * @param c a character code corresponding to a given suit.
+         */
         Suit(String c) {
             code = c;
         }
@@ -63,6 +83,11 @@ public class Card {
 
         private String code;
 
+        /**
+         * enum comparator to create a face object which is used to define a card.
+         *
+         * @param c a character code corresponding to a given face.
+         */
         Face(String c) {
             code = c;
         }

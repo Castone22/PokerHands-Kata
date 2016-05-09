@@ -25,7 +25,7 @@ public class HandBuilder {
         return output;
     }
 
-    public static ArrayList<String> extractCards(String c) {
+    public static ArrayList<String> extractCards(String c) throws IllegalArgumentException{
         c = c + " ";
         ArrayList<String> cardCodes = new ArrayList<String>();
         for (int i = c.indexOf(':') + 2; i < c.indexOf("Whi")-2; i += 3) {
@@ -34,7 +34,9 @@ public class HandBuilder {
         for (int i = c.indexOf("e:") + 3; i < c.length(); i += 3) {
             cardCodes.add(c.substring(i, Math.min(c.length(), i + 3)));
         }
-        return cardCodes;
-
+        if(cardCodes.size()==10) {
+            return cardCodes;
+        }
+        throw new IllegalArgumentException("Invalid input string.  Please try again.");
     }
 }

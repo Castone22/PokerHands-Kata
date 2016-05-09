@@ -61,6 +61,9 @@ public class Hand implements Comparable<Hand> {
         return type;
     }
 
+    public Card.Face getHighestCard(){
+        return uniqueFaces.getFirst();
+    }
 
     @Override
     public String toString() {
